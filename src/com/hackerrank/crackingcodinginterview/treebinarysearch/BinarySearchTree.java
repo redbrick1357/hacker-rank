@@ -1,4 +1,4 @@
-package feedzai.hackerrank;
+package com.hackerrank.crackingcodinginterview.treebinarysearch;
 
 /**
  * Created by cfeng01 on 28/04/17.
