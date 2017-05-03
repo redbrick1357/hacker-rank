@@ -14,12 +14,19 @@ public class BubbleSort {
         for(int a_i=0; a_i < n; a_i++){
             a[a_i] = in.nextInt();
         }
+
+        int numberOfSwaps = sortBubbleSort(a);
+
+        System.out.println("Array is sorted in "+numberOfSwaps+" swaps.");
+        System.out.println("First Element: "+a[0]);
+        System.out.println("Last Element: "+a[a.length-1]);
+
     }
 
-    private int sortBubbleSort(int[] ar) {
+    private static int sortBubbleSort(int[] ar){
         int temp;
-        int numberOfSwaps = 0;
-        for (int i = 0; i < ar.length; ++i) {
+        int numberOfSwaps=0;
+        for (int i=0;i<ar.length;++i) {
 
             for (int j = 0; j < (ar.length - 1); ++j) {
                 if (ar[j] > ar[j + 1]) {
