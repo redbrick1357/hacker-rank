@@ -5,6 +5,7 @@ import java.util.Stack;
 
 /**
  * Created by cfeng01 on 03/05/17.
+ * Challenge source: https://www.hackerrank.com/challenges/ctci-balanced-brackets
  */
 public class StacksMatchingBrackets {
     private static final Character OPENING_BRACKET_1 = '(';
@@ -14,7 +15,7 @@ public class StacksMatchingBrackets {
     private static final Character OPENING_BRACKET_3 = '[';
     private static final Character CLOSING_BRACKET_3 = ']';
 
-    public static boolean isBalanced(String expression) {
+    private static boolean isBalanced(String expression) {
         Stack<Character> stack = new Stack<>();
         boolean result = true;
         Character currentChar;
@@ -28,22 +29,24 @@ public class StacksMatchingBrackets {
             } else if (currentChar == OPENING_BRACKET_3) {
                 stack.push(CLOSING_BRACKET_3);
             } else { /* working for the closing brackets scenarios */
-                if (result && (currentChar == CLOSING_BRACKET_1 || currentChar == CLOSING_BRACKET_2 || currentChar == CLOSING_BRACKET_3)) {
+                if (currentChar == CLOSING_BRACKET_1 || currentChar == CLOSING_BRACKET_2 || currentChar == CLOSING_BRACKET_3) {
                     if (stack.isEmpty()) {
                         result = false;
                     } else {
                         Character b = stack.pop();
-                        if (b == currentChar)
-                            result = true;
-                        else
-                            result = false;
+                        result = b == currentChar;
                     }
-                    if (result == false) {
+                    if (!result) {
                         break;
                     }
 
                 }
             }
+        }
+        /**/
+        if(!stack.isEmpty()){
+            // there are pending brackets [to be closed]
+            result=false;
         }
         return result;
     }
@@ -55,5 +58,6 @@ public class StacksMatchingBrackets {
             String expression = in.next();
             System.out.println((isBalanced(expression)) ? "YES" : "NO");
         }
+        in.close();
     }
 }
